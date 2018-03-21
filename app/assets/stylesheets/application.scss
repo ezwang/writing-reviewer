@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+@import "font-awesome";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#content {
+    padding: 15px;
+}
+
+.login-links {
+    margin-top: 5px;
+}
+.login-links a:not(:last-child):after {
+    content: ' - ';
+}
