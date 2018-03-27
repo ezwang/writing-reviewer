@@ -38,3 +38,17 @@ body {
 .alerts .alert {
     margin: 15px;
 }
+.form-group .field_with_errors:first-of-type {
+    display: inline-block;
+}
+#error_explanation {
+    @extend .alert;
+    @extend .alert-danger;
+}
+#error_explanation h2 {
+    font-size: 1em;
+    font-weight: bold;
+}
+#error_explanation ul {
+    margin-bottom: 0;
+}

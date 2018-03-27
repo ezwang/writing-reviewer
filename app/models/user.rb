@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :given_assignments, class_name: 'Assignment'
 
+  validates :status, presence: true, inclusion: { in: ['student', 'teacher'] }
+
   def username
     @username ||= email.split('@')[0]
   end
