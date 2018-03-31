@@ -37,6 +37,7 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0'
 gem 'font-awesome-rails'
 
+gem 'date_validator'
 gem 'devise'
 gem 'paperclip'
 
