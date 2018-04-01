@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :given_assignments, class_name: 'Assignment'
   has_many :user_assignments, dependent: :destroy
   has_many :assignments, through: :user_assignment
+  has_many :reviewed_essays, class_name: 'Review', dependent: :destroy
 
   validates :status, presence: true, inclusion: { in: ['student', 'teacher'] }
 
