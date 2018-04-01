@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :given_assignments, class_name: 'Assignment'
+  has_many :assignments, through: :user_assignment
 
   validates :status, presence: true, inclusion: { in: ['student', 'teacher'] }
 
