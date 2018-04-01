@@ -1,0 +1,22 @@
+<%= form_with(model: essay, local: true) do |form| %>
+  <% if essay.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(essay.errors.count, "error") %> prohibited this essay from being saved:</h2>
+
+      <ul>
+      <% essay.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :assignment_id %>
+    <%= form.text_field :assignment_id, id: :essay_assignment_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
