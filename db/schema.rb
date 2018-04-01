@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180401174835) do
+ActiveRecord::Schema.define(version: 20180401180544) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "creator_id"
@@ -19,6 +19,35 @@ ActiveRecord::Schema.define(version: 20180401174835) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_assignments_on_creator_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "review_id"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_comments_on_review_id"
+  end
+
+  create_table "essays", force: :cascade do |t|
+    t.integer "assignment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "file_file_name"
+    t.string "file_content_type"
+    t.integer "file_file_size"
+    t.datetime "file_updated_at"
+    t.index ["assignment_id"], name: "index_essays_on_assignment_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "essay_id"
+    t.integer "reviewer_id"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["essay_id"], name: "index_reviews_on_essay_id"
+    t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
 
   create_table "user_assignments", force: :cascade do |t|
