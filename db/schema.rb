@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180401180544) do
+ActiveRecord::Schema.define(version: 20180404162854) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "creator_id"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 20180401180544) do
     t.datetime "review_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
+    t.text "description"
     t.index ["creator_id"], name: "index_assignments_on_creator_id"
   end
 

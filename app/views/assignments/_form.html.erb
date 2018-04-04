@@ -11,22 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :creator_id %>
-    <%= form.text_field :creator_id, id: :assignment_creator_id %>
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :assignment_title, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :assignment_description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
     <%= form.label :due_date %>
     <%= form.datetime_select :due_date, id: :assignment_due_date %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :review_date %>
     <%= form.datetime_select :review_date, id: :assignment_review_date %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

@@ -1,10 +1,11 @@
 class AssignmentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
 
   # GET /assignments
   # GET /assignments.json
   def index
-    @assignments = Assignment.all
+    @assignments = current_user.given_assignments
   end
 
   # GET /assignments/1
@@ -25,6 +26,7 @@ class AssignmentsController < ApplicationController
   # POST /assignments.json
   def create
     @assignment = Assignment.new(assignment_params)
+    @assignment.creator = current_user
 
     respond_to do |format|
       if @assignment.save
@@ -70,6 +72,6 @@ class AssignmentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def assignment_params
-    params.require(:assignment).permit(:creator_id, :due_date, :review_date)
+    params.require(:assignment).permit(:title, :description, :due_date, :review_date)
   end
 end

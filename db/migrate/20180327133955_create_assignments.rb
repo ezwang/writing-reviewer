@@ -1,7 +1,7 @@
 class CreateAssignments < ActiveRecord::Migration[5.1]
   def change
     create_table :assignments do |t|
-      t.references :creator, references: :users, foreign_key: true
+      t.references :creator
       t.datetime :due_date
       t.datetime :review_date
 

@@ -3,6 +3,8 @@ class Assignment < ApplicationRecord
   has_many :user_assignments, dependent: :destroy
   has_many :users, through: :user_assignment
 
+  validates :title, presence: true
+
   validates :due_date, presence: true
   validates :review_date, presence: true, date: { after_or_equal: :due_date }
 end
