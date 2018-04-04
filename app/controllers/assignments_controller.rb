@@ -6,7 +6,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments
   # GET /assignments.json
   def index
-    @assignments = current_user.student ? current_user.assignments : current_user.given_assignments
+    @assignments = current_user.student? ? current_user.assignments : current_user.given_assignments
   end
 
   # GET /assignments/1
