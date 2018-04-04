@@ -1,6 +1,6 @@
 class AssignmentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_teacher!, only: [:edit, :update, :destroy]
+  before_action :check_teacher!, only: [:edit, :update, :destroy]
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
 
   # GET /assignments
