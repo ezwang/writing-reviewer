@@ -12,12 +12,12 @@
 
 <p>
   <strong>Due date:</strong>
-  <%= @assignment.due_date %> (<%= timeago_tag @assignment.due_date %>)
+  <%= @assignment.due_date %> (<%= timeago_tag @assignment.due_date, force: true %>)
 </p>
 
 <p>
   <strong>Review date:</strong>
-  <%= @assignment.review_date %> (<%= timeago_tag @assignment.review_date %>)
+  <%= @assignment.review_date %> (<%= timeago_tag @assignment.review_date, force: true %>)
 </p>
 
 <p>

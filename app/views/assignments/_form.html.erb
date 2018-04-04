@@ -23,12 +23,12 @@
 
   <div class="form-group">
     <%= form.label :due_date %>
-    <%= form.datetime_select :due_date, id: :assignment_due_date %>
+    <%= form.text_field :due_date, id: :assignment_due_date, class: 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= form.label :review_date %>
-    <%= form.datetime_select :review_date, id: :assignment_review_date %>
+    <%= form.text_field :review_date, id: :assignment_review_date, class: 'form-control' %>
   </div>
 
   <div class="actions">
