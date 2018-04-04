@@ -1,6 +1,6 @@
 <div class="box">
     <% if user_signed_in? %>
-        <% if current_user.is_student? %>
+        <% if current_user.student? %>
             <h4>Your Assignments</h4>
             <ul>
                 <li>Item</li>

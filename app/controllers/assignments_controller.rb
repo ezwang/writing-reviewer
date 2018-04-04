@@ -1,15 +1,12 @@
 class AssignmentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :authenticate_teacher!, only: [:edit, :update, :destroy]
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
 
   # GET /assignments
   # GET /assignments.json
   def index
-    if current_user.is_student?
-      @assignments = current_user.assignments
-    else
-      @assignments = current_user.given_assignments
-    end
+    @assignments = current_user.student ? current_user.assignments : current_user.given_assignments
   end
 
   # GET /assignments/1

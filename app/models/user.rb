@@ -15,11 +15,11 @@ class User < ApplicationRecord
     @username ||= email.split('@')[0]
   end
 
-  def is_teacher?
+  def teacher?
     status == 'teacher'
   end
 
-  def is_student?
+  def student?
     status == 'student'
   end
 end
