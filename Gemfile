@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0'
 gem 'font-awesome-rails'
+gem 'rails-timeago', '~> 2.16.0'
 
 gem 'date_validator'
 gem 'devise'
