@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Assignments</h1>
 
 <table class="table">
@@ -8,7 +6,7 @@
       <th>Title</th>
       <th>Due date</th>
       <th>Review date</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -18,14 +16,18 @@
         <td><%= assignment.title %></td>
         <td><%= assignment.due_date %> (<%= timeago_tag assignment.due_date, force: true %>)</td>
         <td><%= assignment.review_date %> (<%= timeago_tag assignment.review_date, force: true %>)</td>
-        <td><%= link_to 'Show', assignment, class: 'btn btn-sm btn-success' %></td>
-        <td><%= link_to 'Edit', edit_assignment_path(assignment), class: 'btn btn-sm btn-primary' %></td>
-        <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %></td>
+        <td>
+            <%= link_to 'Show', assignment, class: 'btn btn-sm btn-success' %>
+            <% if current_user.is_teacher? %>
+                <%= link_to 'Edit', edit_assignment_path(assignment), class: 'btn btn-sm btn-primary' %>
+                <%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+            <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Assignment', new_assignment_path, class: 'btn btn-success' %>
+<% if current_user.is_teacher? %>
+    <%= link_to 'New Assignment', new_assignment_path, class: 'btn btn-success' %>
+<% end %>

@@ -5,7 +5,11 @@ class AssignmentsController < ApplicationController
   # GET /assignments
   # GET /assignments.json
   def index
-    @assignments = current_user.given_assignments
+    if current_user.is_student?
+      @assignments = current_user.assignments
+    else
+      @assignments = current_user.given_assignments
+    end
   end
 
   # GET /assignments/1
