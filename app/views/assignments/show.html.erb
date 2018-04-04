@@ -12,12 +12,23 @@
 
 <p>
   <strong>Due date:</strong>
-  <%= @assignment.due_date %>
+  <%= @assignment.due_date %> (<%= timeago_tag @assignment.due_date %>)
 </p>
 
 <p>
   <strong>Review date:</strong>
-  <%= @assignment.review_date %>
+  <%= @assignment.review_date %> (<%= timeago_tag @assignment.review_date %>)
+</p>
+
+<p>
+  <b>Students:</b>
+  <ul>
+      <% if @assignment.students.each do |student| %>
+        <li><%= student.username %></li>
+      <% end.empty? %>
+        <li>There are no students with this assignment.</li>
+      <% end %>
+  </ul>
 </p>
 
 <%= link_to 'Edit', edit_assignment_path(@assignment) %> |
