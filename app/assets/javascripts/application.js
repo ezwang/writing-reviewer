@@ -17,6 +17,7 @@
 //= require popper
 //= require bootstrap
 //= require rails-timeago
+//= require cocoon
 
 //= require_tree .
 

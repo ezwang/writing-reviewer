@@ -1,37 +1,49 @@
 <%= form_with(model: assignment, local: true) do |form| %>
-  <% if assignment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <% if assignment.errors.any? %>
+                <div id="error_explanation">
+                    <h2><%= pluralize(assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
 
-      <ul>
-      <% assignment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+                    <ul>
+                        <% assignment.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+
+            <div class="form-group">
+                <%= form.label :title %>
+                <%= form.text_field :title, id: :assignment_title, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+                <%= form.label :description %>
+                <%= form.text_area :description, id: :assignment_description, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+                <%= form.label :due_date %>
+                <%= form.text_field :due_date, id: :assignment_due_date, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+                <%= form.label :review_date %>
+                <%= form.text_field :review_date, id: :assignment_review_date, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <%= form.fields_for :user_assignments do |user| %>
+                    <%= render 'user_assignment_fields', f: user %>
+                <% end %>
+                <%= link_to_add_association 'Add Student', form, :user_assignments, class: 'btn btn-success' %>
+            </div>
+        </div>
     </div>
-  <% end %>
 
-  <div class="form-group">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :assignment_title, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :assignment_description, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :due_date %>
-    <%= form.text_field :due_date, id: :assignment_due_date, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :review_date %>
-    <%= form.text_field :review_date, id: :assignment_review_date, class: 'form-control' %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit class: 'btn btn-primary' %>
-  </div>
+    <div class="actions">
+        <%= form.submit class: 'btn btn-primary' %>
+    </div>
 <% end %>

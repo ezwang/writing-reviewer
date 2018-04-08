@@ -38,6 +38,7 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'font-awesome-rails'
 gem 'rails-timeago', '~> 2.16.0'
 
+gem 'cocoon'
 gem 'date_validator'
 gem 'devise'
 gem 'paperclip'
