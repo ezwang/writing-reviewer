@@ -1,6 +1,7 @@
 <h1>Essays</h1>
+<h4><%= @assignment.title %> - <%= @assignment.description %></h4>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Assignment</th>
@@ -22,4 +23,4 @@
 
 <br>
 
-<%= link_to 'New Essay', new_essay_path %>
+<%= link_to 'New Essay', new_assignment_essay_path, class: 'btn btn-success' %>

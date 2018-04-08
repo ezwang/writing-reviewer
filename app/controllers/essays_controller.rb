@@ -1,10 +1,11 @@
 class EssaysController < ApplicationController
+  before_action :set_assignment
   before_action :set_essay, only: [:show, :edit, :update, :destroy]
 
   # GET /essays
   # GET /essays.json
   def index
-    @essays = Essay.all
+    @essays = @assignment.essays
   end
 
   # GET /essays/1
@@ -66,6 +67,10 @@ class EssaysController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_essay
     @essay = Essay.find(params[:id])
+  end
+
+  def set_assignment
+    @assignment = Assignment.find(params[:assignment_id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

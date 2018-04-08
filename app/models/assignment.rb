@@ -2,6 +2,7 @@ class Assignment < ApplicationRecord
   belongs_to :creator, class_name: 'User'
   has_many :user_assignments, dependent: :destroy
   has_many :students, through: :user_assignments, source: :user
+  has_many :essays, through: :user_assignments, source: :essay
 
   validates :title, presence: true
 

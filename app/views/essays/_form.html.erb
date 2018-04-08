@@ -1,4 +1,4 @@
-<%= form_with(model: essay, local: true) do |form| %>
+<%= form_with(url: assignment_essays_path, model: essay, local: true) do |form| %>
   <% if essay.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(essay.errors.count, "error") %> prohibited this essay from being saved:</h2>
@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :assignment_id %>
-    <%= form.text_field :assignment_id, id: :essay_assignment_id %>
+    <%= form.label :file_id %>
+    <%= form.file_field :file, id: :file_id, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
