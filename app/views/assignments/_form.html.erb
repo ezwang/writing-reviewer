@@ -34,11 +34,12 @@
             </div>
         </div>
         <div class="col-md-6">
+            <p>Type in the email of a student to add them to this assignment.</p>
             <div>
-                <%= form.fields_for :user_assignments do |user| %>
-                    <%= render 'user_assignment_fields', f: user %>
+                <%= form.fields_for :students do |user| %>
+                    <%= render 'student_fields', f: user %>
                 <% end %>
-                <%= link_to_add_association 'Add Student', form, :user_assignments, class: 'btn btn-success' %>
+                <%= link_to_add_association 'Add Student', form, :students, class: 'btn btn-success' %>
             </div>
         </div>
     </div>
