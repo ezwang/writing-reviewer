@@ -8,4 +8,8 @@ class Assignment < ApplicationRecord
 
   validates :due_date, presence: true
   validates :review_date, presence: true, date: { after_or_equal: :due_date }
+
+  def past_due?
+    @past_due ||= due_date < Time.now
+  end
 end

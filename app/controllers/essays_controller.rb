@@ -40,26 +40,12 @@ class EssaysController < ApplicationController
     end
   end
 
-  # PATCH/PUT /essays/1
-  # PATCH/PUT /essays/1.json
-  def update
-    respond_to do |format|
-      if @essay.update(essay_params)
-        format.html { redirect_to assignment_essay_path(@assignment, @essay), notice: 'Essay was successfully updated.' }
-        format.json { render :show, status: :ok, location: @essay }
-      else
-        format.html { render :edit }
-        format.json { render json: @essay.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /essays/1
   # DELETE /essays/1.json
   def destroy
     @essay.destroy
     respond_to do |format|
-      format.html { redirect_to essays_url, notice: 'Essay was successfully destroyed.' }
+      format.html { redirect_to assignment_essays_path, notice: 'Essay was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
