@@ -31,6 +31,7 @@ class AssignmentsController < ApplicationController
 
     respond_to do |format|
       if @assignment.save
+        save_students(@assignment)
         format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }
         format.json { render :show, status: :created, location: @assignment }
       else
@@ -45,6 +46,7 @@ class AssignmentsController < ApplicationController
   def update
     respond_to do |format|
       if @assignment.update(assignment_params)
+        save_students(@assignment)
         format.html { redirect_to @assignment, notice: 'Assignment was successfully updated.' }
         format.json { render :show, status: :ok, location: @assignment }
       else
@@ -71,8 +73,25 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find(params[:id])
   end
 
+  def save_students(assignment)
+    @students = params[:students].split(',').map { |email| User.find_by_email(email) }
+    # remove old students
+    assignment.students.each do |student|
+      unless @students.include?(student)
+        assignment.user_assignments.where(user: student).destroy_all
+      end
+    end
+
+    # add new students
+    @students.each do |student|
+      unless assignment.students.include?(student)
+        assignment.user_assignments.create(user: student)
+      end
+    end
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def assignment_params
-    params.require(:assignment).permit(:title, :description, :due_date, :review_date, students_attributes: [:id, :user_id, :_destroy])
+    params.require(:assignment).permit(:title, :description, :due_date, :review_date, :students)
   end
 end
