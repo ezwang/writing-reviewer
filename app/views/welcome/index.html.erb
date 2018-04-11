@@ -13,7 +13,7 @@
             <h4>Created Assignments</h4>
             <ul>
                 <% if current_user.given_assignments.each do |v| %>
-                    <li><%= link_to v.title, assignment_path(v) %></li>
+                    <li><%= link_to v.title, assignment_path(v) %> <span class="subinfo">(due <%= timeago_tag v.due_date, force: true %>)</span></li>
                 <% end.empty? %>
                     <li>You have not created any assignments yet!</li>
                 <% end %>
