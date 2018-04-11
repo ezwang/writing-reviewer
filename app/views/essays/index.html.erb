@@ -4,18 +4,19 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Assignment</th>
-      <th colspan="3"></th>
+      <th>User</th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @essays.each do |essay| %>
       <tr>
-        <td><%= essay.assignment %></td>
-        <td><%= link_to 'Show', essay %></td>
-        <td><%= link_to 'Edit', edit_essay_path(essay) %></td>
-        <td><%= link_to 'Destroy', essay, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= essay.user_assignment.user.email %></td>
+        <td>
+            <%= link_to 'Show', assignment_essay_path(@assignment, essay), class: 'btn btn-primary btn-sm' %>
+            <%= link_to 'Destroy', assignment_essay_path(@assignment, essay), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
