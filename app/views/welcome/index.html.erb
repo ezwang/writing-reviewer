@@ -3,7 +3,9 @@
         <% if current_user.student? %>
             <h4>Your Assignments</h4>
             <ul>
-                <li>Item</li>
+                <% current_user.assignments.each do |v| %>
+                    <li><%= link_to v.title, assignment_path(v) %> <span class="subinfo">(due <%= timeago_tag v.due_date, force: true %>)</span></li>
+                <% end %>
             </ul>
             <h4>Your Reviews</h4>
             <ul>
