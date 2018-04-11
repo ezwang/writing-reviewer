@@ -29,5 +29,9 @@
   </ul>
 </p>
 
-<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
-<%= link_to 'Back', assignments_path %>
+<% if current_user.teacher? %>
+    <%= link_to 'Edit', edit_assignment_path(@assignment) %> |
+    <%= link_to 'Back', assignments_path %>
+<% else %>
+    <%= link_to 'Submit Essay', new_assignment_essay_path(@assignment), class: 'btn btn-success' %>
+<% end %>
