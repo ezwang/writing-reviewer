@@ -1,7 +1,8 @@
 class EssaysController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_teacher!, only: [:destroy]
   before_action :set_assignment
-  before_action :set_essay, only: [:show, :edit, :update, :destroy]
+  before_action :set_essay, only: [:show, :destroy]
 
   # GET /essays
   # GET /essays.json
@@ -17,10 +18,6 @@ class EssaysController < ApplicationController
   # GET /essays/new
   def new
     @essay = Essay.new
-  end
-
-  # GET /essays/1/edit
-  def edit
   end
 
   # POST /essays
