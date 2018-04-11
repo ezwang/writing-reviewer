@@ -4,7 +4,13 @@
             <h4>Your Assignments</h4>
             <ul>
                 <% current_user.assignments.order(review_date: :desc, due_date: :desc).each do |v| %>
-                    <li><%= link_to v.title, assignment_path(v) %> <span class="subinfo">(due <%= timeago_tag v.due_date, force: true %>)</span></li>
+                    <li>
+                        <%= link_to v.title, assignment_path(v) %>
+                        <span class="subinfo">(due <%= timeago_tag v.due_date, force: true %>)</span>
+                        <% if v.user_assignments.find_by(user: current_user).submitted? %>
+                            <i>(submitted)</i>
+                        <% end %>
+                    </li>
                 <% end %>
             </ul>
             <h4>Your Reviews</h4>

@@ -6,4 +6,8 @@ class UserAssignment < ApplicationRecord
 
   validates :user, presence: true
   validates :assignment, presence: true
+
+  def submitted?
+    essay
+  end
 end
