@@ -1,4 +1,5 @@
 class EssaysController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_assignment
   before_action :set_essay, only: [:show, :edit, :update, :destroy]
 
@@ -26,10 +27,11 @@ class EssaysController < ApplicationController
   # POST /essays.json
   def create
     @essay = Essay.new(essay_params)
+    @essay.user_assignment = @assignment.user_assignments.find_by(user: current_user)
 
     respond_to do |format|
       if @essay.save
-        format.html { redirect_to @essay, notice: 'Essay was successfully created.' }
+        format.html { redirect_to assignment_essay_path(@assignment, @essay), notice: 'Essay was successfully created.' }
         format.json { render :show, status: :created, location: @essay }
       else
         format.html { render :new }
@@ -43,7 +45,7 @@ class EssaysController < ApplicationController
   def update
     respond_to do |format|
       if @essay.update(essay_params)
-        format.html { redirect_to @essay, notice: 'Essay was successfully updated.' }
+        format.html { redirect_to assignment_essay_path(@assignment, @essay), notice: 'Essay was successfully updated.' }
         format.json { render :show, status: :ok, location: @essay }
       else
         format.html { render :edit }
@@ -75,6 +77,6 @@ class EssaysController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def essay_params
-    params.require(:essay).permit(:assignment_id)
+    params.require(:essay).permit(:file)
   end
 end

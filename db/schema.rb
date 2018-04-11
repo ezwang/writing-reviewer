@@ -32,14 +32,14 @@ ActiveRecord::Schema.define(version: 20180404162854) do
   end
 
   create_table "essays", force: :cascade do |t|
-    t.integer "assignment_id"
+    t.integer "user_assignment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "file_file_name"
     t.string "file_content_type"
     t.integer "file_file_size"
     t.datetime "file_updated_at"
-    t.index ["assignment_id"], name: "index_essays_on_assignment_id"
+    t.index ["user_assignment_id"], name: "index_essays_on_user_assignment_id"
   end
 
   create_table "reviews", force: :cascade do |t|
