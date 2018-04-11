@@ -1,1 +1,6 @@
-<%= link_to 'Back', assignment_essays_path %>
+<iframe src="<%= @essay.file %>"></iframe>
+<div id="review-tools">
+    <h3>Uploaded Essay</h3>
+    <p>Written by: <i><%= @essay.user_assignment.user.email %></i></p>
+    <%= link_to 'Back', assignment_essays_path, class: 'btn btn-secondary' %>
+</div>
