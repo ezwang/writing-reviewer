@@ -3,7 +3,10 @@
     <h3>Uploaded Essay</h3>
     <p>Written by: <i><%= @essay.user_assignment.user.email %></i></p>
     <% @essay.comments.each do |comment| %>
-        <div class="comment"><%= comment.text %></div>
+        <div class="comment">
+            <%= comment.text %>
+            <div class="creator">~ <%= comment.review.user.email %></div>
+        </div>
     <% end %>
     <% unless @essay.user_assignment.user == current_user %>
         <form action="<%= assignment_essay_comments_path(@assignment, @essay) %>" method="POST">
