@@ -23,6 +23,10 @@ class User < ApplicationRecord
     status == 'student'
   end
 
+  def assignment?(assignment)
+    UserAssignment.exists?(assignment: assignment, user: id)
+  end
+
   def assignments_to_turn_in
     assignments.where('due_date > ?', 2.days.ago)
   end

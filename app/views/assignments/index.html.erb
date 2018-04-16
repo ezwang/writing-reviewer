@@ -17,7 +17,9 @@
         <td><%= assignment.due_date %> (<%= timeago_tag assignment.due_date, force: true %>)</td>
         <td><%= assignment.review_date %> (<%= timeago_tag assignment.review_date, force: true %>)</td>
         <td>
-            <%= link_to 'Show', assignment, class: 'btn btn-sm btn-success' %>
+            <% if current_user.assignment?(assignment) %>
+                <%= link_to 'Show', assignment, class: 'btn btn-sm btn-success' %>
+            <% end %>
             <% if current_user.teacher? %>
                 <%= link_to 'Edit', edit_assignment_path(assignment), class: 'btn btn-sm btn-primary' %>
                 <%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
