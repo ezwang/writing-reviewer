@@ -2,7 +2,7 @@
 <div id="review-tools">
     <h3>Uploaded Essay</h3>
     <p>Written by: <i><%= @essay.user_assignment.user.email %></i></p>
-    <% @essay.comments.each do |comment| %>
+    <% @essay.comments.order(updated_at: :asc).each do |comment| %>
         <div class="comment">
             <%= comment.text %>
             <div class="creator">~ <%= comment.review.user.email %></div>
