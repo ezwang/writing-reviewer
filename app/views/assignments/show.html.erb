@@ -1,44 +1,46 @@
-<p>
-  <strong>Title:</strong>
-  <%= @assignment.title %>
-</p>
+<div class="box">
+    <p>
+      <strong>Title:</strong>
+      <%= @assignment.title %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @assignment.description %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @assignment.description %>
+    </p>
 
-<p>
-  <strong>Due date:</strong>
-  <%= @assignment.due_date %> (<%= timeago_tag @assignment.due_date, force: true %>)
-</p>
+    <p>
+      <strong>Due date:</strong>
+      <%= @assignment.due_date %> (<%= timeago_tag @assignment.due_date, force: true %>)
+    </p>
 
-<p>
-  <strong>Review date:</strong>
-  <%= @assignment.review_date %> (<%= timeago_tag @assignment.review_date, force: true %>)
-</p>
+    <p>
+      <strong>Review date:</strong>
+      <%= @assignment.review_date %> (<%= timeago_tag @assignment.review_date, force: true %>)
+    </p>
 
-<p>
-  <b>Students:</b>
-  <ul>
-      <% if @assignment.students.each do |student| %>
-        <li><%= student.username %></li>
-      <% end.empty? %>
-        <li>There are no students with this assignment.</li>
-      <% end %>
-  </ul>
-</p>
+    <p>
+      <b>Students:</b>
+      <ul>
+          <% if @assignment.students.each do |student| %>
+            <li><%= student.username %></li>
+          <% end.empty? %>
+            <li>There are no students with this assignment.</li>
+          <% end %>
+      </ul>
+    </p>
 
-<% if current_user.teacher? %>
-    <%= link_to 'Edit', edit_assignment_path(@assignment) %> |
-    <%= link_to 'Back', assignments_path %>
-<% else %>
-    <% if @assignment.user_assignments.find_by(user: current_user).submitted? %>
-        <%= link_to 'View Your Essay', assignment_essay_path(@assignment, @assignment.user_assignments.find_by(user: current_user).essay), class: 'btn btn-primary' %>
+    <% if current_user.teacher? %>
+        <%= link_to 'Edit', edit_assignment_path(@assignment) %> |
+        <%= link_to 'Back', assignments_path %>
     <% else %>
-        <%= link_to 'Submit Essay', new_assignment_essay_path(@assignment), class: 'btn btn-success' %>
+        <% if @assignment.user_assignments.find_by(user: current_user).submitted? %>
+            <%= link_to 'View Your Essay', assignment_essay_path(@assignment, @assignment.user_assignments.find_by(user: current_user).essay), class: 'btn btn-primary' %>
+        <% else %>
+            <%= link_to 'Submit Essay', new_assignment_essay_path(@assignment), class: 'btn btn-success' %>
+        <% end %>
+        <% if @assignment.past_due? %>
+            <%= link_to 'View All Essays', assignment_essays_path(@assignment), class: 'btn btn-secondary' %>
+        <% end %>
     <% end %>
-    <% if @assignment.past_due? %>
-        <%= link_to 'View All Essays', assignment_essays_path(@assignment), class: 'btn btn-secondary' %>
-    <% end %>
-<% end %>
+</div>
