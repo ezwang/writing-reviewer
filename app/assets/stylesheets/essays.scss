@@ -2,17 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 iframe {
-    width: calc(100% - 300px);
-    height: calc(100vh - 56px - 45px);
+    width: calc(100% - 350px);
+    height: calc(100vh - 56px);
     border: none;
     float: left;
 }
 #review-tools {
     float: left;
-    width: 300px;
+    width: 350px;
     padding: 15px;
     overflow-y: auto;
-    max-height: calc(100vh - 56px - 45px);
+    max-height: calc(100vh - 56px);
 }
 .comment {
     background-color: #efefef;
@@ -24,4 +24,7 @@ iframe {
 .comment .creator {
     font-size: 0.7em;
     font-style: italic;
+}
+#essay-container {
+    margin: -15px;
 }
