@@ -11,7 +11,7 @@
   </thead>
 
   <tbody>
-    <% @assignments.each do |assignment| %>
+    <% if @assignments.each do |assignment| %>
       <tr>
         <td><%= assignment.title %></td>
         <td><%= assignment.due_date %> (<%= timeago_tag assignment.due_date, force: true %>)</td>
@@ -25,6 +25,10 @@
                 <%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
             <% end %>
         </td>
+      </tr>
+    <% end.empty? %>
+      <tr>
+        <td colspan="4">There are no assignments to display.</td>
       </tr>
     <% end %>
   </tbody>
