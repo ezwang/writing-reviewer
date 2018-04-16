@@ -77,16 +77,12 @@ class AssignmentsController < ApplicationController
     @students = params[:students].split(',').map { |email| User.find_by_email(email) }
     # remove old students
     assignment.students.each do |student|
-      unless @students.include?(student)
-        assignment.user_assignments.where(user: student).destroy_all
-      end
+      assignment.user_assignments.where(user: student).destroy_all unless @students.include?(student)
     end
 
     # add new students
     @students.each do |student|
-      unless assignment.students.include?(student)
-        assignment.user_assignments.create(user: student)
-      end
+      assignment.user_assignments.create(user: student) unless assignment.students.include?(student)
     end
   end
 
