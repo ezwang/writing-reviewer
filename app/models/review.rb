@@ -1,8 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :essay
-  belongs_to :reviewer, class_name: 'User'
+  belongs_to :user
   has_many :comments, dependent: :destroy
 
-  validates :score, presence: true
-  validates_inclusion_of :score, in: 0..100
+  validates_inclusion_of :score, in: 0..100, allow_nil: true
 end

@@ -2,6 +2,7 @@ class Essay < ApplicationRecord
   belongs_to :user_assignment
 
   has_many :reviews, dependent: :destroy
+  has_many :comments, through: :reviews
   has_attached_file :file
 
   validates :user_assignment, presence: true, uniqueness: true

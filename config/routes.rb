@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/users', to: 'users#index'
 
   resources :assignments do
-    resources :essays, except: [:edit, :update]
+    resources :essays, except: [:edit, :update] do
+      resources :comments, only: [:create]
+    end
   end
 end

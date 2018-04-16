@@ -2,5 +2,17 @@
 <div id="review-tools">
     <h3>Uploaded Essay</h3>
     <p>Written by: <i><%= @essay.user_assignment.user.email %></i></p>
+    <% @essay.comments.each do |comment| %>
+        <div class="comment"><%= comment.text %></div>
+    <% end %>
+    <% unless @essay.user_assignment.user == current_user %>
+        <form action="<%= assignment_essay_comments_path(@assignment, @essay) %>" method="POST">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <div class="form-group">
+                <textarea name="comment[text]" class="form-control mb-2" placeholder="Your Comments"></textarea>
+                <button class="btn btn-primary btn-sm">Add Comment</button>
+            </div>
+        </form>
+    <% end %>
     <%= link_to 'Back', assignment_essays_path, class: 'btn btn-secondary' %>
 </div>

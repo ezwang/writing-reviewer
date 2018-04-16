@@ -44,12 +44,12 @@ ActiveRecord::Schema.define(version: 20180404162854) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer "essay_id"
-    t.integer "reviewer_id"
+    t.integer "user_id"
     t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["essay_id"], name: "index_reviews_on_essay_id"
-    t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "user_assignments", force: :cascade do |t|
