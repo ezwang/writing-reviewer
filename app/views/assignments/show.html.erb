@@ -39,6 +39,6 @@
         <%= link_to 'Submit Essay', new_assignment_essay_path(@assignment), class: 'btn btn-success' %>
     <% end %>
     <% if @assignment.past_due? %>
-        <%= link_to 'View All Essays', assignment_essays_path(@assignment), class: 'btn btn-primary' %>
+        <%= link_to 'View All Essays', assignment_essays_path(@assignment), class: 'btn btn-secondary' %>
     <% end %>
 <% end %>
