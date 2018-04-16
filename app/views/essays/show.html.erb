@@ -2,11 +2,13 @@
 <div id="review-tools">
     <h3>Uploaded Essay</h3>
     <p>Written by: <i><%= @essay.user_assignment.user.email %></i></p>
-    <% @essay.comments.order(updated_at: :asc).each do |comment| %>
+    <% if @essay.comments.order(updated_at: :asc).each do |comment| %>
         <div class="comment">
             <%= comment.text %>
             <div class="creator">~ <%= comment.review.user.email %></div>
         </div>
+    <% end.empty? %>
+        <p>No peer reviewers have added any comments yet.</p>
     <% end %>
     <% unless @essay.user_assignment.user == current_user %>
         <form action="<%= assignment_essay_comments_path(@assignment, @essay) %>" method="POST">
