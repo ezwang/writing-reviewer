@@ -7,7 +7,15 @@ class UserAssignment < ApplicationRecord
   validates :user, presence: true
   validates :assignment, presence: true
 
+  # Has the user submitted an essay?
   def submitted?
     essay
+  end
+
+  # Has the user left at least one comment on each essay?
+  def reviewed?
+    review_count = Review.where(user: user, essay: assignment.essays).count
+    total_count = assignment.user_assignments.count
+    total_count - review_count - 1 <= 0
   end
 end

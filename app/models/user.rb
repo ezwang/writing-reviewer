@@ -22,4 +22,12 @@ class User < ApplicationRecord
   def student?
     status == 'student'
   end
+
+  def assignments_to_turn_in
+    assignments.where('due_date > ?', 2.days.ago)
+  end
+
+  def assignments_to_review
+    assignments.where('review_date > ?', Time.now).where('due_date < ?', Time.now)
+  end
 end

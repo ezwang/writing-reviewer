@@ -3,7 +3,7 @@
         <% if current_user.student? %>
             <h4>Your Assignments</h4>
             <ul>
-                <% current_user.assignments.order(review_date: :desc, due_date: :desc).each do |v| %>
+                <% if current_user.assignments_to_turn_in.order(review_date: :desc, due_date: :desc).each do |v| %>
                     <li>
                         <%= link_to v.title, assignment_path(v) %>
                         <span class="subinfo">(due <%= timeago_tag v.due_date, force: true %>)</span>
@@ -11,11 +11,27 @@
                             <i>(submitted)</i>
                         <% end %>
                     </li>
+                <% end.empty? %>
+                    <li>
+                        There are currently no assignments that you need to submit.
+                    </li>
                 <% end %>
             </ul>
             <h4>Your Reviews</h4>
             <ul>
-                <li>Item</li>
+                <% if current_user.assignments_to_review.order(review_date: :desc, due_date: :desc).each do |v| %>
+                    <li>
+                        <%= link_to v.title, assignment_path(v) %>
+                        <span class="subinfo">(due <%= timeago_tag v.due_date, force: true %>)</span>
+                        <% if v.user_assignments.find_by(user: current_user).reviewed? %>
+                            <i>(reviewed)</i>
+                        <% end %>
+                    </li>
+                <% end.empty? %>
+                    <li>
+                        There are currently no essays for you to review.
+                    </li>
+                <% end %>
             </ul>
         <% else %>
             <h4>Created Assignments</h4>

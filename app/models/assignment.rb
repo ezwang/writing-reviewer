@@ -12,4 +12,8 @@ class Assignment < ApplicationRecord
   def past_due?
     @past_due ||= due_date < Time.now
   end
+
+  def past_review?
+    @past_review ||= review_date < Time.now
+  end
 end
