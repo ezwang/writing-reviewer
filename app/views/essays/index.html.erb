@@ -12,7 +12,7 @@
   <tbody>
     <% if @essays.each do |essay| %>
       <tr>
-        <td><%= essay.user_assignment.user.email %></td>
+        <td><%= essay.user_assignment.user.email %><% if essay.late? %> <span class="late">(Late)</span><% end %></td>
         <td>
             <% if current_user.teacher? || @assignment.past_due? || essay.user_assignment.user == current_user %>
               <%= link_to 'Show', assignment_essay_path(@assignment, essay), class: 'btn btn-primary btn-sm' %>

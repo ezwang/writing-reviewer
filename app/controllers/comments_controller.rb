@@ -4,9 +4,7 @@ class CommentsController < ApplicationController
 
   def create
     @review = Review.where(essay: @essay, user: current_user).first
-    unless @review
-      @review = Review.create(essay: @essay, user: current_user)
-    end
+    @review ||= Review.create(essay: @essay, user: current_user)
     @review.comments.create(comment_params)
     respond_to do |format|
       format.html { redirect_to assignment_essay_path(@assignment, @essay) }
