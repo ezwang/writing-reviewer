@@ -30,7 +30,7 @@
 
 <br>
 
-<% if current_user.student? %>
+<% if current_user.student? && !@assignment.past_review? %>
   <%= link_to 'New Essay', new_assignment_essay_path, class: 'btn btn-success' %>
 <% end %>
 <%= link_to 'View Assignment', assignment_path(@assignment), class: 'btn btn-secondary' %>

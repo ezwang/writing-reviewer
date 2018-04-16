@@ -34,7 +34,7 @@
     <%= link_to 'Back', assignments_path %>
 <% else %>
     <% if @assignment.user_assignments.find_by(user: current_user).submitted? %>
-        <%= link_to 'View Essay', assignment_essay_path(@assignment, @assignment.user_assignments.find_by(user: current_user).essay), class: 'btn btn-primary' %>
+        <%= link_to 'View Your Essay', assignment_essay_path(@assignment, @assignment.user_assignments.find_by(user: current_user).essay), class: 'btn btn-primary' %>
     <% else %>
         <%= link_to 'Submit Essay', new_assignment_essay_path(@assignment), class: 'btn btn-success' %>
     <% end %>
