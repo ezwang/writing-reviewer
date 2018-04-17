@@ -2,6 +2,10 @@
     <div class="essay">
         <% if @essay.file.exists? %>
             <iframe src="<%= @essay.file %>"></iframe>
+        <% else %>
+            <div class="not-found">
+                <p>The file associated with this submission could not be found.</p>
+            </div>
         <% end %>
     </div>
     <div id="review-tools">
