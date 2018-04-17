@@ -71,7 +71,7 @@ group :production do
   gem 'pg'
 
   # Store uploaded files on S3
-  gem 'aws-sdk', '~> 2.3'
+  gem 'aws-sdk', '~> 3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
