@@ -19,6 +19,19 @@
 //= require rails-timeago
 //= require cocoon
 
+//= require messenger.min.js
+//= require messenger-theme-flat.js
+
 //= require_tree .
 
 jQuery.timeago.settings.allowFuture = true;
+
+$(document).on("turbolinks:load", function() {
+    $(".alerts .alert").each(function() {
+        Messenger().post({
+            message: $(this).text(),
+            type: $(this).hasClass("alert-danger") ? "danger" : "success"
+        });
+        $(this).remove();
+    });
+});

@@ -40,8 +40,12 @@ h1 {
 .field_with_errors .form-control {
     border-color: red;
 }
-.alerts .alert {
-    margin: 15px;
+.alerts {
+    display: none;
+}
+.messenger .alert {
+    margin-bottom: 0;
+    margin-top: 15px;
 }
 .form-group .field_with_errors:first-of-type {
     display: inline-block;
