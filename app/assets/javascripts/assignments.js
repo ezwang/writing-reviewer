@@ -14,7 +14,7 @@ $(document).on("turbolinks:load", function() {
         create: false,
         load: function(query, callback) {
             if (!query.length) return;
-            $.get("/users", function(data) {
+            $.get("/users?q=" + encodeURIComponent(query), function(data) {
                 callback(data.map(function(x) { return {"email": x}; }));
             });
         }
