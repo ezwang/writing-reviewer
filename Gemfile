@@ -1,3 +1,5 @@
+ruby '2.4.1'
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -68,6 +70,7 @@ group :production do
   # Use pg as the database for Active Record in production
   gem 'pg'
 
+  # Store uploaded files on S3
   gem 'aws-sdk', '~> 2.3'
 end
 
