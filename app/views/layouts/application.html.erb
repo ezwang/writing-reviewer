@@ -41,7 +41,8 @@
               <ul class="navbar-nav ml-auto">
                   <% if user_signed_in? %>
                     <li class="nav-item">
-                        <%= current_user.username %> - <%= current_user.status.humanize %>
+                        <%= current_user.username %>
+                        <span class="user-type"><%= current_user.status.humanize %></span>
                     </li>
                   <% end %>
               </ul>
