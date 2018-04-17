@@ -48,6 +48,7 @@
     <% else %>
         <h2>Welcome to Writing Reviewer!</h2>
         <p>Writing Reviewer is a tool to help students and professors coordinate peer reviews and give feedback.</p>
+        <%= image_tag 'stock_image.jpg', alt: 'Stock Photo', class: 'stock-photo' %>
         <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary' %>
         <%= link_to 'Register', new_user_registration_path, class: 'btn btn-success' %>
     <% end %>
