@@ -1,11 +1,16 @@
 // Place all the styles related to the essays controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-iframe {
+.essay {
     width: calc(100% - 350px);
     height: calc(100vh - 56px);
-    border: none;
+    background-color: #ccc;
     float: left;
+}
+.essay iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 #review-tools {
     float: left;

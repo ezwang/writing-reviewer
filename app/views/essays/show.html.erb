@@ -1,5 +1,9 @@
 <div id="essay-container">
-    <iframe src="<%= @essay.file %>"></iframe>
+    <div class="essay">
+        <% if @essay.file.exists? %>
+            <iframe src="<%= @essay.file %>"></iframe>
+        <% end %>
+    </div>
     <div id="review-tools">
         <h3>Uploaded Essay</h3>
         <p>Written by: <i><%= @essay.user_assignment.user.email %></i></p>
