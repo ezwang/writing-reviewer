@@ -7,12 +7,14 @@ class EssaysController < ApplicationController
   # GET /essays
   # GET /essays.json
   def index
+    redirect_to assignment_path(@assignment) unless current_user.teacher? || @assignment.past_due?
     @essays = @assignment.essays
   end
 
   # GET /essays/1
   # GET /essays/1.json
   def show
+    redirect_to assignment_path(@assignment) unless current_user.teacher? || @assignment.past_due? || @essay.user_assignment.user == current_user
   end
 
   # GET /essays/new
