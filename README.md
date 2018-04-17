@@ -11,3 +11,10 @@ bundle install
 rails db:migrate
 rails server
 ```
+
+## Environment Variables
+- `RAILS_ENV`: Should be `production` in production, or `development` or not set otherwise.
+- `DATABASE_URL`: Specifies the location of the database. Uses sqlite by default if not specified.
+- `SENDGRID_USERNAME`: Sendgrid username used to send password reset emails.
+- `SENDGRID_PASSWORD`: Sendgrid password used to send password reset emails.
+- `S3_BUCKET_NAME`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`: Used to store essays. Uses filesystem by default if not set. Should be set when using a service like Heroku because of [ephemeral filesystems](https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem).
