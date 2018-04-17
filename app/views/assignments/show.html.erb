@@ -31,8 +31,9 @@
     </p>
 
     <% if current_user.teacher? %>
-        <%= link_to 'Edit', edit_assignment_path(@assignment) %> |
-        <%= link_to 'Back', assignments_path %>
+        <%= link_to 'View Essays', assignment_essays_path(@assignment), class: 'btn btn-primary' %>
+        <%= link_to 'Edit', edit_assignment_path(@assignment), class: 'btn btn-success' %>
+        <%= link_to 'Back', assignments_path, class: 'btn btn-secondary' %>
     <% else %>
         <% if @assignment.user_assignments.find_by(user: current_user).submitted? %>
             <%= link_to 'View Your Essay', assignment_essay_path(@assignment, @assignment.user_assignments.find_by(user: current_user).essay), class: 'btn btn-primary' %>
