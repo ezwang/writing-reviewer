@@ -67,6 +67,8 @@ end
 group :production do
   # Use pg as the database for Active Record in production
   gem 'pg'
+
+  gem 'aws-sdk', '~> 2.3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
