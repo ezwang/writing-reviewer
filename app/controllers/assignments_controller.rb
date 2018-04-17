@@ -1,7 +1,7 @@
 class AssignmentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_teacher!, only: [:edit, :update, :destroy]
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
+  before_action :check_owner!, only: [:edit, :update, :destroy]
 
   # GET /assignments
   # GET /assignments.json
@@ -84,6 +84,10 @@ class AssignmentsController < ApplicationController
     @students.each do |student|
       assignment.user_assignments.create(user: student) unless assignment.students.include?(student)
     end
+  end
+
+  def check_owner!
+    redirect_to root_path unless @assignment.creator == current_user
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
