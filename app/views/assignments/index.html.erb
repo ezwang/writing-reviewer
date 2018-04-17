@@ -17,7 +17,7 @@
         <td><%= assignment.due_date %> (<%= timeago_tag assignment.due_date, force: true %>)</td>
         <td><%= assignment.review_date %> (<%= timeago_tag assignment.review_date, force: true %>)</td>
         <td>
-            <% if current_user.assignment?(assignment) %>
+            <% if current_user.assignment?(assignment) || current_user.teacher? %>
                 <%= link_to 'Show', assignment, class: 'btn btn-sm btn-success' %>
             <% end %>
             <% if current_user.teacher? %>
