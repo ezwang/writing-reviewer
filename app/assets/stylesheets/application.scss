@@ -35,6 +35,8 @@ h1 {
     margin-top: 5px;
 }
 .login-links a:not(:last-child):after {
+    color: #aaa;
+    text-decoration: none;
     content: ' - ';
 }
 .field_with_errors .form-control {
