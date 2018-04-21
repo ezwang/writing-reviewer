@@ -3,3 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "selectize.css";
+
+#groups .group {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 3px;
+    min-width: 250px;
+    float: left;
+}
+#groups .group .group-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+}
+#groups .group .group-items {
+    width: 100%;
+    min-height: 100px;
+}

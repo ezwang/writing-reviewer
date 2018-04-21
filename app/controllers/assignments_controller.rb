@@ -75,6 +75,7 @@ class AssignmentsController < ApplicationController
 
   def save_students(assignment)
     @students = params[:students].split(',').map { |email| User.find_by_email(email) }
+    @groups = JSON.parse(params[:groups])
     # remove old students
     assignment.students.each do |student|
       assignment.user_assignments.where(user: student).destroy_all unless @students.include?(student)
@@ -82,7 +83,11 @@ class AssignmentsController < ApplicationController
 
     # add new students
     @students.each do |student|
-      assignment.user_assignments.create(user: student) unless assignment.students.include?(student)
+      assignment.user_assignments.create(user: student, group: 0) unless assignment.students.include?(student)
+    end
+
+    @groups.each do |item|
+      assignment.user_assignments.joins(:user).find_by(users: { email: item[0] }).update(group: item[1])
     end
   end
 
@@ -92,6 +97,6 @@ class AssignmentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def assignment_params
-    params.require(:assignment).permit(:title, :description, :due_date, :review_date, :students)
+    params.require(:assignment).permit(:title, :description, :due_date, :review_date, :students, :groups)
   end
 end

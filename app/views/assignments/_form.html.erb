@@ -35,7 +35,18 @@
         </div>
         <div class="col-md-6">
             <p>Type in the email of a student to add them to this assignment.</p>
-            <input id="students" name="students" type="text" value="<%= assignment.students.map(&:email).join(',') %>" />
+            <input id="students" name="students" type="text" value="<%= assignment.user_assignments.map { |sa| "#{sa.user.email},#{sa.group}" }.join(',') %>" />
+            <p>Drag around the students to assign them to different groups.</p>
+            <div id="groups">
+                <% [0, 1, 2, 3].each do |id| %>
+                <div class="group" data-id="<%= id %>">
+                    <div class="mb-2">Group <%= id %></div>
+                    <div class="group-items">
+                    </div>
+                </div>
+                <% end %>
+            </div>
+            <input type="hidden" name="groups" />
         </div>
     </div>
 
