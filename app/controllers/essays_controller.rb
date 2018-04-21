@@ -8,6 +8,9 @@ class EssaysController < ApplicationController
   # GET /essays.json
   def index
     redirect_to assignment_path(@assignment) unless current_user.teacher? || @assignment.past_due?
+    if current_user.student?
+      @group = @assignment.user_assignments.find_by(user_id: current_user).group
+    end
     @essays = @assignment.essays
   end
 
