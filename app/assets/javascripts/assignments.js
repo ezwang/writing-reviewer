@@ -40,11 +40,13 @@ $(document).on("turbolinks:load", function() {
             this.clear();
             this.clearOptions();
             for (var i = 0; i < raw.length; i += 2) {
-                this.addOption({
-                    email: raw[i],
-                    group: raw[i + 1]
-                });
-                this.addItem(raw[i]);
+                if (raw[i]) {
+                    this.addOption({
+                        email: raw[i],
+                        group: raw[i + 1]
+                    });
+                    this.addItem(raw[i]);
+                }
             }
         }
     });
