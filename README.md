@@ -12,6 +12,8 @@ rails db:migrate
 rails server
 ```
 
+To load test data, run `rails db:fixtures:load`.
+
 ## Environment Variables
 - `RAILS_ENV`: Should be `production` in production, or `development` or not set otherwise.
 - `DATABASE_URL`: Specifies the location of the database. Uses sqlite by default if not specified.
