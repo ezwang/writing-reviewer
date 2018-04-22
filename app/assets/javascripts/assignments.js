@@ -15,6 +15,16 @@ $(document).on("turbolinks:load", function() {
         ele.attr("data-id", item);
         $("#groups").find(".group[data-id='" + group + "']").first().find(".group-items").append(ele);
     }
+    function shuffle(arr) {
+        var len = arr.length;
+        while (len > 0) {
+            var index = Math.floor(Math.random() * len);
+            len--;
+            var tmp = arr[len];
+            arr[len] = arr[index];
+            arr[index] = tmp;
+        }
+    }
     var selectize = $("#students").selectize({
         valueField: 'email',
         labelField: 'email',
@@ -62,5 +72,16 @@ $(document).on("turbolinks:load", function() {
             });
         });
         $("input[name='groups']").val(JSON.stringify(out));
+    });
+    $("#distribute").click(function(e) {
+        e.preventDefault();
+        var ids = $("#groups .group-item").map(function() {
+            return $(this).attr("data-id");
+        });
+        $("#groups .group-item").remove();
+        shuffle(ids);
+        $.each(ids, function(k, v) {
+            addStudentToGroup(v, k % 4);
+        });
     });
 });
