@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ActionController::Base
   before_action :authenticate_user!
 

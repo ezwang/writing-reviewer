@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Assignment < ApplicationRecord
   belongs_to :creator, class_name: 'User'
   has_many :user_assignments, dependent: :destroy

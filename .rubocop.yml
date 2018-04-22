@@ -12,8 +12,6 @@ Style/SymbolArray:
   Enabled: false
 Style/WordArray:
     Enabled: false
-Style/FrozenStringLiteralComment:
-    Enabled: false
 
 AllCops:
   Exclude:

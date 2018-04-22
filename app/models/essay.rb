@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Essay < ApplicationRecord
   belongs_to :user_assignment
 
