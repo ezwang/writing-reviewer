@@ -22,7 +22,7 @@
     <p>
       <b>Students:</b>
       <ul>
-          <% if @assignment.user_assignments.each do |student| %>
+          <% if @assignment.user_assignments.order(:group).each do |student| %>
             <li><%= student.user.username %> <span class="group">(Group <%= student.group %>)</span></li>
           <% end.empty? %>
             <li>There are no students with this assignment.</li>
