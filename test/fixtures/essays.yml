@@ -1,0 +1,4 @@
+<% 25.times do |v| %>
+essay_<%= v %>:
+    user_assignment: user_assignment_<%= v %>
+<% end %>
