@@ -21,11 +21,11 @@
 
     <p>
       <b>Students:</b>
-      <ul>
+      <ul id="student-list" class="clearfix mb-3">
           <% if @assignment.user_assignments.order(:group).each do |student| %>
             <li><%= student.user.username %> <span class="group">(Group <%= student.group %>)</span></li>
           <% end.empty? %>
-            <li>There are no students with this assignment.</li>
+            <li class="empty">There are no students with this assignment.</li>
           <% end %>
       </ul>
     </p>

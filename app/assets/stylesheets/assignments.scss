@@ -29,3 +29,11 @@ ul .group {
     font-size: 0.75em;
     color: #666;
 }
+#student-list li {
+    display: inline-block;
+    width: 33%;
+    float: left;
+}
+#student-list li.empty {
+    width: 100%;
+}
