@@ -1,0 +1,6 @@
+assignment:
+    creator: teacher
+    due_date: <%= Time.now + 2.days %>
+    review_date: <%= Time.now + 4.days %>
+    title: Test Assignment
+    description: This is a test assignment!

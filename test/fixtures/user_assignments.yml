@@ -1,0 +1,6 @@
+<% 100.times do |v| %>
+user_assignment_<%= v %>:
+    user: student<%= v %>
+    assignment: assignment
+    group: <%= v % 4 %>
+<% end %>
