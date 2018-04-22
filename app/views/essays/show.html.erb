@@ -1,7 +1,13 @@
 <div id="essay-container">
     <div class="essay">
         <% if @essay.file.exists? %>
-            <iframe src="<%= @essay.file %>"></iframe>
+            <% if @essay.file.content_type == 'application/msword' || @essay.file.content_type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' %>
+                <div class="not-found">
+                    <p>The file that the user has uploaded could not be rendered in your browser. You can download it <a href='<%= @essay.file %>'>here</a>.</p>
+                </div>
+            <% else %>
+                <iframe src="<%= @essay.file %>"></iframe>
+            <% end %>
         <% else %>
             <div class="not-found">
                 <p>The file associated with this submission could not be found.</p>
