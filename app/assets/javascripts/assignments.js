@@ -81,7 +81,7 @@ $(document).on("turbolinks:load", function() {
         $("#groups .group-item").remove();
         shuffle(ids);
         $.each(ids, function(k, v) {
-            addStudentToGroup(v, k % 4);
+            addStudentToGroup(v, k % $(".group").length);
         });
     });
 });
