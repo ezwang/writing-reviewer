@@ -36,16 +36,16 @@ $(document).on("turbolinks:load", function() {
             });
         },
         onInitialize: function() {
-            var raw = this.$input.val().split(",");
+            var raw = JSON.parse(this.$input.attr("data-raw"));
             this.clear();
             this.clearOptions();
-            for (var i = 0; i < raw.length; i += 2) {
-                if (raw[i]) {
+            for (var i = 0; i < raw.length; i++) {
+                if (raw[i][0]) {
                     this.addOption({
-                        email: raw[i],
-                        group: raw[i + 1]
+                        email: raw[i][0],
+                        group: raw[i][1]
                     });
-                    this.addItem(raw[i]);
+                    this.addItem(raw[i][0]);
                 }
             }
         }

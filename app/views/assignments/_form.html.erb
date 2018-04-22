@@ -35,7 +35,7 @@
         </div>
         <div class="col-md-6">
             <p>Type in the email of a student to add them to this assignment.</p>
-            <input id="students" name="students" type="text" value="<%= assignment.user_assignments.map { |sa| "#{sa.user.email},#{sa.group}" }.join(',') %>" />
+            <input id="students" name="students" type="text" data-raw="<%= assignment.user_assignments.map { |sa| [sa.user.email, sa.group] }.to_json %>" />
             <p>Drag around the students to assign them to different groups.</p>
             <div id="groups">
                 <% [0, 1, 2, 3].each do |id| %>
