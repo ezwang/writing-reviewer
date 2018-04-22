@@ -7,7 +7,7 @@ class EssaysController < ApplicationController
   # GET /essays
   # GET /essays.json
   def index
-    redirect_to assignment_path(@assignment), alert: 'You cannot view essays until the due date has passed!' unless current_user.teacher? || @assignment.past_due?
+    redirect_to assignment_path(@assignment) unless current_user.teacher? || @assignment.past_due?
     if current_user.student?
       @group = @assignment.user_assignments.find_by(user_id: current_user).group
     end
